@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: whitesmoke;
+    height: 100vh;
+    width: 100vw;
+    background: white;
+    font-family: "Roboto", sans-serif;
+}
+
+h1 {
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.container {
+    margin-inline: 20%;
+    margin-top: 20px;
+    background: black;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.recordButton {
+    transition: all 500ms ease-out;
+}
+
+.recordButton:hover {
+    scale: 1.2;
+    transform: rotate(360deg);
+}
