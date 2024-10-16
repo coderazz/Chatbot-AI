@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dominique</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>DOMINIQUE</h1>
+    <button id="start-speech">Ask your Question</button>
+    <button id="detect-face">Are you Human?</button>
+    <p id="result"></p>
+    <p id="response"></p>
+
+    <script>
+        document.getElementById('start-speech').onclick = function() {
+            fetch('/recognize_speech', {
+                method: 'POST',
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    document.getElementById('result').textContent = 'Error: ' + data.error;
+                } else {
+                    document.getElementById('result').textContent = 'You said: ' + data.text;
+                    document.getElementById('response').textContent = 'Response: ' + data.response;
+                }
+            });
+        };
+
+        document.getElementById('detect-face').onclick = function() {
+            fetch('/detect_faces', {
+                method: 'POST',
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').textContent = data.message;
+            });
+        };
+    </script>
+</body>
+</html>
